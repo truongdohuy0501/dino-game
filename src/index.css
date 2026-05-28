@@ -1,0 +1,14 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100svh;
+  font-family: 'Nunito', 'Avenir Next', 'Segoe UI', sans-serif;
+}
