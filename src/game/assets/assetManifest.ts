@@ -40,6 +40,8 @@ const SCENE_SVG_ASSETS: { key: string; path: string; width: number; height: numb
 ]
 
 const svgFallbackKey = (pngKey: string): string => `${pngKey}-svg`
+const fromBase = (path: string): string =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
 const textureLoaded = (scene: Phaser.Scene, key: string): boolean => {
   if (!scene.textures.exists(key)) {
@@ -56,21 +58,21 @@ const textureLoaded = (scene: Phaser.Scene, key: string): boolean => {
 
 export const preloadGameAssets = (scene: Phaser.Scene): void => {
   SCENE_SVG_ASSETS.forEach((asset) => {
-    scene.load.svg(asset.key, asset.path, {
+    scene.load.svg(asset.key, fromBase(asset.path), {
       width: asset.width,
       height: asset.height,
     })
   })
 
   DINO_SVG_FALLBACK.forEach((asset) => {
-    scene.load.svg(svgFallbackKey(asset.key), asset.path, {
+    scene.load.svg(svgFallbackKey(asset.key), fromBase(asset.path), {
       width: asset.width,
       height: asset.height,
     })
   })
 
   DINO_FRAME_KEYS.forEach((key) => {
-    scene.load.image(key, `/assets/images/dino/${key}.png`)
+    scene.load.image(key, fromBase(`/assets/images/dino/${key}.png`))
   })
 }
 
