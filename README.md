@@ -24,6 +24,23 @@ npm run build
 
 After adding new DALL-E PNGs locally, run `npm run fix-assets` before commit.
 
+## Deploy (GitHub Pages with CI/CD)
+
+This repository includes GitHub Actions workflows:
+
+- `CI`: runs lint + build on push / pull request
+- `Deploy to GitHub Pages`: builds and deploys `main` to Pages
+
+### One-time GitHub settings
+
+1. Go to `Settings` -> `Pages`.
+2. In **Build and deployment**, choose **Source: GitHub Actions**.
+3. Push to `main` and wait for the deploy workflow to finish.
+
+Demo URL format:
+
+`https://<github-username>.github.io/<repo-name>/`
+
 ## Current Game Flow
 
 - Tap egg
